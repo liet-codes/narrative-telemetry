@@ -1,0 +1,13 @@
+{
+  "name": "narrative-telemetry",
+  "version": "0.1.0",
+  "description": "Model stories as causal systems with absential dynamics",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "example:fellowship": "tsc && node dist/examples/fellowship.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
