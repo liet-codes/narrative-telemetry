@@ -114,6 +114,37 @@ Can the narrative telemetry system capture James Joyce's "Araby" — a story whe
 
 **The test:** Can the system represent the simultaneous collapse of attractor, self-deceptive lens, mode shift, and entropy completion?
 
+### Reflection: What the System Captured and What It Missed
+
+**Results:**
+- Tension curve: continuous rise from 0.333 to 0.588, peaking AT the epiphany. The system doesn't show collapse because the epiphany resolves 3 absentials but the remaining unresolved ones (dublin-paralysis, uncle-obstacle, dead-priest-absence) keep tension elevated. This is actually *more accurate* than a simple drop would be — the boy's anguish and anger ARE ongoing tension, not resolution.
+- Epistemic gaps: correctly detected self-deception pattern. The boy's 'denied' stance on his projection vs. the scholar's 'known-true' creates the central dramatic irony. At the epiphany, the boy gets BOTH 'denied' and 'known-true' on the same fact — which the gap detector sees as internal divergence. This is exactly right: the epiphany is the boy holding both stances simultaneously for a burning moment.
+- Commutator: narrative depth = 0.0598. The highest non-commutativity (G=0.1255) was between authorial × cultural frames — meaning the story changes most depending on whether you foreground Joyce's thesis or the colonial context. The diegetic-intentional × authorial pair (G=0.0283) was surprisingly low, suggesting these frames are more aligned than expected.
+- Retroactive insertion of 'transferred vocation' raised tension most at the chalice scene (+0.027) and the epiphany (+0.031), correctly identifying the religious-romantic connection.
+
+**What was easy to model:**
+- Entity registry worked perfectly for a small cast
+- Multiple reader archetypes captured genuine interpretive divergence
+- Overdetermined causation on the epiphany (8 frames!) is the richest in the project
+- Absential dynamics captured the attractor/constraint interplay
+
+**What was hard or missing:**
+1. **Mode shift isn't a first-class event.** The system can record that the boy went from 'denied/affective' to 'known-true/epistemic', but it can't represent that the MODE SHIFT ITSELF is the epiphany's meaning. It's metadata on a stance change, not a narrative event.
+2. **Self-deception gap classification.** The gap detector classified the boy-vs-reader divergence as 'mystery' rather than 'self-deception' because the classifyGap function checks for 'denied' status but the reader stances weren't character stances. The self-deception is between the boy's OWN affective and epistemic modes — not between boy and reader.
+3. **Tension doesn't distinguish quality.** The 0.588 at the epiphany is numerically the same KIND of number as the 0.559 during the uncle's arrival. But experientially, one is frustrated waiting and the other is existential self-recognition. The system needs tension *coloring* or *texture*.
+4. **Affective intensity isn't factored into tension.** The boy's intensity: 0.95 during the conversation is lost — tension is computed only from absential pressure, not from epistemic state intensity.
+5. **The 'attractor toward nothing' paradox.** The romantic-projection absential works as an attractor, but the system can't represent that the TARGET of the attractor is illusory. An attractor toward nothing should behave differently from an attractor toward something — it should build tension faster and collapse harder.
+
+**What Araby reveals that LOTR and the mystery didn't:**
+- LOTR: external action, clear attractor (destroy ring), epistemic mostly propositional → system handles well
+- Mystery: information-driven, reader focus, clear resolution → system handles well  
+- Araby: INTERNAL action, illusory attractor, affective knowledge, mode-shift as climax → system captures the bones but misses the texture
+
+**How viable is 'LLM as reader, types as schema'?**
+Highly viable. This analysis took one pass of reading + structured output. The LLM (me) could identify 8 causal frames for the epiphany, model 3 reader archetypes with genuine interpretive divergence, and detect the key absential dynamics. The types forced clarity: I had to decide whether the romantic projection was an 'attractor' or a 'secret' or both. I chose attractor (for the pull) with a separate self-deception secret (for the hidden truth). These forced choices are GOOD — they make literary analysis concrete and debatable.
+
+The workflow is: read → close-read → model → run → compare to reading → iterate. The types are the schema; the LLM is the reader; the reducer is the calculator; the output is the analysis.
+
 ## Summary of Discoveries
 
 ### What the system can do:
