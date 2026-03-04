@@ -186,3 +186,88 @@ The cascade is proportional: if a knower depends on ONE source for a belief and 
 - **examples/fellowship.ts** — Full Fellowship analysis
 - **examples/mystery.ts** — Mystery genre analysis with genre comparison
 - **tests/** — 21 passing tests across 3 test files
+
+## Iteration 6: Complex-Valued Tension and Commutator
+**Date:** 2026-03-03
+
+### Hypothesis
+Narrative tension is complex-valued: magnitude = intensity, phase = quality/texture. "Frustrated waiting" and "existential dread" have the same magnitude but different phase. Complex representation should reveal interference patterns between absential forces and richer commutator dynamics.
+
+### Implementation
+1. **`src/complex.ts`** — Complex number library (add, mul, polar, magnitude, phase, conjugate, sum, rms)
+2. **`src/complex-tension.ts`** — Complex pressure per absential kind (phase mapping by ontological quality), complex tension computation with interference factor, trajectory visualization
+3. **`src/complex-commutator.ts`** — Complex-valued commutator where imaginary part arises from register distance × anchoring asymmetry
+4. **`tests/complex.test.ts`** — 19 new tests (40 total, all passing)
+5. **`examples/complex-analysis.ts`** — All three stories analyzed with complex tension
+
+### Phase Mapping (Emergent from Absential Taxonomy)
+```
+0°   attractor, potential  — pulling toward a future
+45°  prophecy              — fate pulling toward specific future  
+90°  tension, secret       — pure suspense/uncertainty
+135° obligation            — moral weight against desire
+180° absence, entropy      — grief/loss/the pull of what's gone
+225° repulsor              — pushing away from threat
+270° constraint            — downward pressure/limitation
+```
+
+Two axes: Re = future↔past orientation, Im = suspense↔grounding.
+
+### Key Findings
+
+**1. Phase signatures are genre-diagnostic.**
+- Mystery: phase ≈ 90° throughout (pure suspense) → drops to 0° at resolution. Perfect: mystery IS pure "hidden knowledge" tension.
+- Fellowship: phase ≈ -11° to -22° (anticipation weighted by constraint). The negative imaginary component means constraint is pulling down while desire pulls forward — quest tension.
+- Araby: phase ≈ 40-53° (prophetic/fateful pulling). The mix of attractor and secret phases creates a diagonal pull — the boy is drawn toward something while something hidden operates beneath.
+
+**2. Interference factor discriminates narrative types.**
+- Mystery: interference = 1.0 (all secrets are aligned — pure constructive interference). This is correct: all three mystery absentials (whodunit, howdunit, whydunit) are secrets at the same phase.
+- Araby: interference ≈ 0.71 (partially aligned). The mix of attractor, constraint, secret, and absence creates partial cancellation — forces pull in different directions.
+- Fellowship: interference ≈ 0.53-0.81 (mixed). Most varied because it has the most diverse absential types.
+
+**3. Interference = √2/2 for orthogonal forces is exact.**
+Test confirms: attractor (0°) + secret (90°) → interference = 0.707 = 1/√2. This is the geometric mean — orthogonal narrative forces don't cancel but don't amplify either.
+
+**4. Opposing absentials cancel to zero.**
+Attractor (0°) + absence (180°) → magnitude ≈ 0. This is narrative equilibrium: the pull of desire perfectly balanced by the weight of loss. The system can now represent what scalar tension cannot: a state of high TOTAL pressure but zero NET tension.
+
+**5. Complex commutator imaginary part is small but real.**
+The imaginary part arises from anchoring asymmetry × register distance. It's non-zero for cross-register pairs (diegetic × authorial) and zero for same-register pairs. The Araby epiphany's largest imaginary commutator: diegetic-intentional × cultural (im = -0.072). This represents the interference between "the boy recognizes his vanity" and "colonial escape fantasy collapses" — foregrounding one creates a resonance that foregrounding the other doesn't.
+
+**6. The trajectory shape is meaningful.**
+- Araby traces a rising arc that curves left during resolution (phase increases → more "loss" component after epiphany)
+- Fellowship traces a rightward arc into the fourth quadrant (forward desire + downward constraint)
+- Mystery goes straight up the imaginary axis then drops to origin
+
+### What Complex Values Reveal That Scalar Missed
+
+**Scalar tension said:** Araby epiphany = 0.588, Fellowship Gandalf-fall = 0.469. Araby is "more tense."
+**Complex tension says:** Araby = 1.187∠43°, Fellowship = 1.672∠-11°. Different magnitudes AND different phases. The fellowship moment is actually higher magnitude (more total pressure) but oriented differently: forward desire vs. upward fate.
+
+**Scalar tension said:** Mystery starts at 0.784. High tension.
+**Complex tension says:** Mystery = 2.300∠90°. The phase being exactly 90° (pure imaginary) means mystery tension is PURELY suspense — no desire, no grief, no constraint. Just "what is hidden?" This is genre-defining.
+
+### Verdict: Does Phase Mean Something?
+
+**Yes.** Phase is not noise. The three genres produce distinctly different phase signatures that correspond to interpretively meaningful qualities:
+- Secrets produce 90° (suspense)
+- Forward-pulling forces produce 0° (desire/anticipation)  
+- Constraints produce -90° (limitation/grounding)
+- Loss produces 180° (grief/absence)
+
+The phase of Araby's epiphany (43°) ≠ Gandalf's fall (-11°), Δφ = 54°. The epiphany is "prophetic" (a truth crashing in), while the fall is "anticipatory" (a loss that reshapes the quest forward). These are genuinely different phenomenological qualities.
+
+**The interference factor is perhaps the most important new metric.** It measures whether narrative forces are working together (mystery: 1.0) or at cross-purposes (fellowship: 0.53). This captures something fundamental about genre: mysteries are "clean" (one type of tension), epics are "tangled" (many types interfering).
+
+### Open Questions
+1. Would reader-dependent complex tension be meaningful? (Each reader archetype might experience different phase based on what they know)
+2. Can we detect narrative phase transitions — moments where the phase angle changes discontinuously?
+3. The complex commutator imaginary parts are small. Is this a limitation of the formula, or is narrative frame interference genuinely subtle?
+
+### Files Added/Modified
+- `src/complex.ts` (new)
+- `src/complex-tension.ts` (new)
+- `src/complex-commutator.ts` (new)
+- `src/index.ts` (updated exports)
+- `tests/complex.test.ts` (new, 19 tests)
+- `examples/complex-analysis.ts` (new)

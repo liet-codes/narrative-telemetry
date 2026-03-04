@@ -35,3 +35,15 @@ export type { GraphNode, GraphEdge, NarrativeGraph } from './graph.js'
 // Belief revision
 export { reviseBeliefs, printRevision } from './belief-revision.js'
 export type { RevisionResult } from './belief-revision.js'
+
+// Complex numbers
+export { complex, polar, add, sub, mul, scale, conjugate, magnitude, phase, phaseDeg, sum, rms, ZERO, toString, toPolar } from './complex.js'
+export type { Complex } from './complex.js'
+
+// Complex tension
+export { computeComplexTension, complexPressure, interpretPhase, plotTrajectory, printComplexTensionTable } from './complex-tension.js'
+export type { ComplexTensionResult } from './complex-tension.js'
+
+// Complex commutator
+export { computeComplexCommutator, complexCommutatorMatrix, complexNarrativeDepth } from './complex-commutator.js'
+export type { ComplexCommutatorResult } from './complex-commutator.js'
