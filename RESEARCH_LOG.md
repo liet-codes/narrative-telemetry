@@ -66,3 +66,48 @@ The highest non-commutativity appears between frames of DIFFERENT REGISTER: dieg
 1. The commutator values are still modest (max 0.091). Need to explore whether this is a limitation of the formula or genuine — maybe narrative frames are more commutative than expected?
 2. Can we create an event that has STRONG non-commutativity (G > 0.3)? What would that look like?
 3. The mystery starts at high tension because secrets are established at event 0. Should "initial mystery pressure" be treated differently from built-up pressure?
+
+## Iteration 3: Absential Field Graph + Integration
+**Date:** 2026-03-03
+
+### Hypothesis
+The absential field can be rendered as a graph, and its topology reveals narrative structure — centrality = narrative importance.
+
+### Experiment
+Built graph module: entities + absentials + facts as nodes, causal/epistemic/gap relationships as edges. Computes degree centrality.
+
+### Analysis
+**Key finding:** The most connected node in the Fellowship graph is the fact "Bilbo's ring is the One Ring" (degree 11). This makes perfect sense — it's the epistemic hub around which ALL other narrative dynamics orbit. The second most connected are "Gandalf will return" and "Boromir is corrupted" (degree 7 each) — both are epistemic gaps that drive dramatic tension.
+
+**The graph reveals:** Narrative importance ≈ epistemic centrality. The facts that generate the most gaps and the absentials that affect the most entities are the load-bearing elements of the story.
+
+**Graph stats:**
+- 21 nodes (9 entities, 7 absentials, 5 facts)
+- 48 edges (13 affects, 5 causes, 11 gaps)
+- This is a small but dense graph — most nodes are connected
+
+### Commutator Findings (Refined)
+Gandalf's fall remains the highest-depth event (0.048). The cross-register pairs (diegetic × authorial) consistently show the most non-commutativity. Same-register pairs (diegetic-mechanical × diegetic-intentional) always commute.
+
+This is a genuine finding: **narrative depth arises from cross-ontological causation**. When an event is explained by forces in different ontological registers (physics vs. myth vs. authorship), the order in which you foreground each explanation changes the interpretive gestalt.
+
+## Summary of Discoveries
+
+### What the system can do:
+1. Model narrative state with full epistemic tracking (who knows what, how, why)
+2. Detect epistemic gaps and classify their narrative effects (irony, mystery, suspense)
+3. Compute tension curves that correctly discriminate genre (mystery arc vs. epic rise)
+4. Retroactively insert absentials and compute how they reshape the entire narrative
+5. Detect narrative structure (exposition, rising action, climax, resolution) from tension
+6. Compute the Groovy Commutator over causal frames → narrative depth metric
+7. Build and analyze the absential field as a graph
+
+### What it can't do (yet):
+1. Automatic event/entity extraction from text (needs LLM integration)
+2. Semantic relevance scoring (still uses tag overlap)
+3. Full belief revision with justification DAG propagation
+4. Temporal resolution of epistemic states at arbitrary discourse positions
+5. Cross-story comparison (e.g., "how do mysteries differ from epics systematically?")
+
+### The deepest insight:
+**Narrative depth = cross-register causal interference.** Stories are deep when they can't be reduced to a single explanatory frame. The Groovy Commutator measures this precisely. A purely mechanistic event (ball rolls downhill) has depth 0. A purely allegorical event (the phoenix rises) has depth 0. Gandalf's fall — simultaneously physics, choice, myth, theme, and authorial design — has genuine depth because these frames don't commute.

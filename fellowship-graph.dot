@@ -1,0 +1,77 @@
+digraph NarrativeField {
+  rankdir=LR;
+  node [fontsize=10];
+  // Entities
+  "char:frodo" [label="Frodo Baggins" shape=ellipse];
+  "char:gandalf" [label="Gandalf" shape=ellipse];
+  "char:sam" [label="Samwise Gamgee" shape=ellipse];
+  "char:aragorn" [label="Aragorn" shape=ellipse];
+  "char:boromir" [label="Boromir" shape=ellipse];
+  "obj:one-ring" [label="The One Ring" shape=box];
+  "theme:power-corrupts" [label="Power Corrupts" shape=diamond];
+  "theme:sacrifice" [label="Sacrifice" shape=diamond];
+  "theme:fellowship-bonds" [label="The Bonds of Fellowship" shape=diamond];
+  // Absentials
+  "abs:ring-corruption" [label="The One Ring corrupts its bearer\n[constraint] p=0.66" shape=octagon color=red fontcolor=red];
+  "abs:sauron-rising" [label="Sauron is regathering power and seeking \n[attractor] p=0.34" shape=octagon color=red fontcolor=red];
+  "abs:quest-to-mordor" [label="The Ring must reach Mount Doom\n[attractor] p=0.33" shape=octagon color=red fontcolor=red];
+  "abs:aragorns-kingship" [label="Aragorn's unclaimed throne of Gondor\n[potential] p=0.22" shape=octagon color=red fontcolor=red];
+  "abs:boromir-weakness" [label="Boromir's desire to use the Ring for Gon\n[tension] p=0.00" shape=octagon color=gray fontcolor=gray];
+  "abs:gandalf-absence" [label="Gandalf is gone. The Fellowship has lost\n[absence] p=1.00" shape=octagon color=red fontcolor=red];
+  "abs:fellowship-broken" [label="The Fellowship is sundered. Each group f\n[entropy] p=0.60" shape=octagon color=red fontcolor=red];
+  // Facts
+  "fact:ring-is-one-ring" [label="Bilbo's ring is the One Ring of Sauron" shape=note];
+  "fact:ring-must-be-destroyed" [label="The One Ring must be destroyed in Mount " shape=note];
+  "fact:aragorn-is-heir" [label="Aragorn is the heir of Isildur, rightful" shape=note];
+  "fact:gandalf-will-return" [label="Gandalf will return as Gandalf the White" shape=note];
+  "fact:boromir-tempted" [label="Boromir is being corrupted by the Ring" shape=note];
+  // Edges
+  "abs:ring-corruption" -> "char:frodo" [style=solid color=red];
+  "abs:ring-corruption" -> "obj:one-ring" [style=solid color=red];
+  "obj:one-ring" -> "abs:ring-corruption" [style=bold color=black label="diegetic-mechanical"];
+  "theme:power-corrupts" -> "abs:ring-corruption" [style=bold color=black label="thematic"];
+  "abs:sauron-rising" -> "obj:one-ring" [style=solid color=red];
+  "abs:quest-to-mordor" -> "char:frodo" [style=solid color=red];
+  "abs:quest-to-mordor" -> "obj:one-ring" [style=solid color=red];
+  "abs:aragorns-kingship" -> "char:aragorn" [style=solid color=red];
+  "abs:boromir-weakness" -> "char:boromir" [style=solid color=red];
+  "abs:boromir-weakness" -> "obj:one-ring" [style=solid color=red];
+  "abs:gandalf-absence" -> "char:frodo" [style=solid color=red];
+  "abs:gandalf-absence" -> "char:aragorn" [style=solid color=red];
+  "char:gandalf" -> "abs:gandalf-absence" [style=bold color=black label="diegetic-mechanical"];
+  "char:gandalf" -> "abs:gandalf-absence" [style=bold color=black label="diegetic-intentional"];
+  "theme:sacrifice" -> "abs:gandalf-absence" [style=bold color=black label="thematic"];
+  "abs:fellowship-broken" -> "char:frodo" [style=solid color=red];
+  "abs:fellowship-broken" -> "char:aragorn" [style=solid color=red];
+  "abs:fellowship-broken" -> "char:sam" [style=solid color=red];
+  "reader-re-reader" -> "fact:ring-is-one-ring" [style=solid color=black label="known-true (epistemic)"];
+  "reader-re-reader" -> "fact:gandalf-will-return" [style=solid color=black label="known-true (epistemic)"];
+  "reader-re-reader" -> "fact:aragorn-is-heir" [style=solid color=black label="known-true (epistemic)"];
+  "reader-re-reader" -> "fact:boromir-tempted" [style=solid color=black label="known-true (epistemic)"];
+  "reader-naive" -> "fact:ring-is-one-ring" [style=solid color=black label="suspected (intuitive)"];
+  "reader-naive" -> "fact:ring-is-one-ring" [style=solid color=black label="known-true (epistemic)"];
+  "reader-naive" -> "fact:aragorn-is-heir" [style=solid color=black label="known-true (epistemic)"];
+  "reader-naive" -> "fact:boromir-tempted" [style=solid color=black label="suspected (intuitive)"];
+  "reader-naive" -> "fact:boromir-tempted" [style=solid color=black label="known-true (epistemic)"];
+  "reader-naive" -> "fact:gandalf-will-return" [style=solid color=black label="believed-false (affective)"];
+  "reader-genre-savvy" -> "fact:ring-is-one-ring" [style=solid color=black label="known-true (epistemic)"];
+  "reader-genre-savvy" -> "fact:boromir-tempted" [style=solid color=black label="believed-true (epistemic)"];
+  "reader-genre-savvy" -> "fact:gandalf-will-return" [style=solid color=black label="suspected (epistemic)"];
+  "character-frodo" -> "fact:ring-is-one-ring" [style=solid color=black label="believed-true (epistemic)"];
+  "character-frodo" -> "fact:ring-must-be-destroyed" [style=solid color=black label="believed-true (moral)"];
+  "character-frodo" -> "fact:ring-must-be-destroyed" [style=solid color=black label="believed-true (affective)"];
+  "character-frodo" -> "fact:aragorn-is-heir" [style=solid color=black label="known-true (epistemic)"];
+  "character-frodo" -> "fact:gandalf-will-return" [style=solid color=black label="believed-false (traumatic)"];
+  "character-sam" -> "fact:ring-is-one-ring" [style=solid color=black label="known-true (epistemic)"];
+  "gap:ring-is-one-ring" -> "fact:ring-is-one-ring" [style=dashed color=purple label="mystery"];
+  "gap:ring-is-one-ring" -> "fact:ring-is-one-ring" [style=dashed color=purple label="mystery"];
+  "gap:ring-is-one-ring" -> "fact:ring-is-one-ring" [style=dashed color=purple label="mystery"];
+  "gap:ring-is-one-ring" -> "fact:ring-is-one-ring" [style=dashed color=purple label="mystery"];
+  "gap:ring-is-one-ring" -> "fact:ring-is-one-ring" [style=dashed color=purple label="mystery"];
+  "gap:gandalf-will-return" -> "fact:gandalf-will-return" [style=dashed color=purple label="dramatic-irony"];
+  "gap:gandalf-will-return" -> "fact:gandalf-will-return" [style=dashed color=purple label="dramatic-irony"];
+  "gap:gandalf-will-return" -> "fact:gandalf-will-return" [style=dashed color=purple label="dramatic-irony"];
+  "gap:boromir-tempted" -> "fact:boromir-tempted" [style=dashed color=purple label="mystery"];
+  "gap:boromir-tempted" -> "fact:boromir-tempted" [style=dashed color=purple label="mystery"];
+  "gap:boromir-tempted" -> "fact:boromir-tempted" [style=dashed color=purple label="mystery"];
+}

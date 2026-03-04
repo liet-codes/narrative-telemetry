@@ -683,3 +683,59 @@ for (const abs of current.absentials) {
   }
   console.log()
 }
+
+// ─── Absential Field Graph ──────────────────────────────────────────
+
+import { buildGraph, graphStats, toDot } from '../src/graph.js'
+
+console.log('╔══════════════════════════════════════════════════════════════╗')
+console.log('║                ABSENTIAL FIELD GRAPH                       ║')
+console.log('╚══════════════════════════════════════════════════════════════╝')
+console.log()
+
+const graph = buildGraph(current)
+console.log(graphStats(graph))
+console.log()
+
+// Write DOT file for visualization
+import { writeFileSync } from 'fs'
+writeFileSync('fellowship-graph.dot', toDot(graph))
+console.log('  DOT file written to fellowship-graph.dot')
+console.log('  Render with: dot -Tpng fellowship-graph.dot -o fellowship-graph.png')
+console.log()
+
+// ─── Narrative Structure ────────────────────────────────────────────
+
+import { detectStructure, printStructure } from '../src/structure.js'
+
+console.log('╔══════════════════════════════════════════════════════════════╗')
+console.log('║              NARRATIVE STRUCTURE                           ║')
+console.log('╚══════════════════════════════════════════════════════════════╝')
+console.log()
+
+const structure = detectStructure(tensionCurve)
+const eventMap = new Map(events.map(e => [e.discourse.seq, e.id]))
+console.log(printStructure(structure, eventMap))
+console.log()
+
+// ─── Commutator Analysis ────────────────────────────────────────────
+
+import { commutatorMatrix, narrativeDepth } from '../src/commutator.js'
+
+console.log('╔══════════════════════════════════════════════════════════════╗')
+console.log('║         GROOVY COMMUTATOR: All Overdetermined Events       ║')
+console.log('╚══════════════════════════════════════════════════════════════╝')
+console.log()
+
+for (const event of events) {
+  if (!event.causation || event.causation.length < 2) continue
+  const depth = narrativeDepth(event)
+  console.log(`  "${event.id}" — depth: ${depth.toFixed(3)}`)
+  const matrix = commutatorMatrix(event)
+  for (const r of matrix) {
+    if (r.commutator > 0.04) {
+      console.log(`    ${r.frameA} × ${r.frameB}: G=${r.commutator.toFixed(3)}`)
+    }
+  }
+  console.log()
+}
