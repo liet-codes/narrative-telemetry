@@ -91,6 +91,29 @@ Gandalf's fall remains the highest-depth event (0.048). The cross-register pairs
 
 This is a genuine finding: **narrative depth arises from cross-ontological causation**. When an event is explained by forces in different ontological registers (physics vs. myth vs. authorship), the order in which you foreground each explanation changes the interpretive gestalt.
 
+## Iteration 5: "Araby" — LLM as Reader, Types as Schema
+**Date:** 2026-03-03
+
+### The Experiment
+Can the narrative telemetry system capture James Joyce's "Araby" — a story where almost nothing happens externally but everything happens internally? This is a fundamentally different test from Fellowship (epic, external action, rising tension) and the mystery (epistemic puzzle, resolution arc). "Araby" is about the *quality of consciousness* — a boy's romantic projection, the gap between felt intensity and objective triviality, and a brutal final epiphany.
+
+### Close Reading
+
+**The story in brief:** An unnamed boy in Dublin develops an intense, quasi-religious infatuation with a neighbor girl ("Mangan's sister"). She mentions a bazaar called Araby that she cannot attend. He promises to bring her something. His uncle comes home late and drunk, delaying him. He arrives at the bazaar as it's closing — dark, empty, commercial. He overhears a banal flirtation. In the darkness, he sees himself "as a creature driven and derided by vanity."
+
+**Key absential dynamics:**
+1. The girl as attractor toward an absence (projection, not person)
+2. Dublin-as-paralysis as constraint (dead-end street, dead priest, entropy)
+3. The boy's romantic lens as invisible self-deception
+4. The uncle's lateness as entropy
+5. Joyce's paralysis thesis as authorial constraint
+
+**Key epistemic insight:** Almost all the boy's knowledge is in *affective* mode. The epiphany is a mode shift from affective to epistemic — felt meaning collapses into known meaninglessness.
+
+**Overdetermined causation of the epiphany:** diegetic-mechanical (dark bazaar), diegetic-intentional (recognition), structural (coming-of-age), thematic (vanity exposed), authorial (Joyce's Dublin thesis), intertextual (grail quest inverted), cultural (colonial escape-fantasy).
+
+**The test:** Can the system represent the simultaneous collapse of attractor, self-deceptive lens, mode shift, and entropy completion?
+
 ## Summary of Discoveries
 
 ### What the system can do:
