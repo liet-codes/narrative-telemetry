@@ -111,3 +111,24 @@ This is a genuine finding: **narrative depth arises from cross-ontological causa
 
 ### The deepest insight:
 **Narrative depth = cross-register causal interference.** Stories are deep when they can't be reduced to a single explanatory frame. The Groovy Commutator measures this precisely. A purely mechanistic event (ball rolls downhill) has depth 0. A purely allegorical event (the phoenix rises) has depth 0. Gandalf's fall — simultaneously physics, choice, myth, theme, and authorial design — has genuine depth because these frames don't commute.
+
+## Iteration 4: Belief Revision + Clean API
+**Date:** 2026-03-03
+
+### Experiment
+Implemented belief revision through justification DAGs: when a fact's truth changes or a source becomes unreliable, downstream beliefs cascade proportionally to their dependence on the compromised source.
+
+### Key Finding
+The cascade is proportional: if a knower depends on ONE source for a belief and that source becomes unreliable, the belief collapses. If they have multiple independent sources, only the compromised branch weakens. This correctly models how epistemic resilience works — Gandalf's knowledge of the Ring survives losing Gollum's testimony because he has three other independent sources.
+
+### Final System Inventory
+- **src/types.ts** — Complete type system (50+ types)
+- **src/reducer.ts** — State reducer with 10 kind-specific absential reducers
+- **src/commutator.ts** — Groovy Commutator over causal frames
+- **src/structure.ts** — Narrative structure detection from tension dynamics
+- **src/graph.ts** — Absential field graph (DOT output for Graphviz)
+- **src/belief-revision.ts** — Justification DAG cascade
+- **src/index.ts** — Clean public API
+- **examples/fellowship.ts** — Full Fellowship analysis
+- **examples/mystery.ts** — Mystery genre analysis with genre comparison
+- **tests/** — 21 passing tests across 3 test files
