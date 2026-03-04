@@ -383,3 +383,210 @@ Everything else (tension computation, irony detection, belief revision) derives 
 ---
 
 *The interesting stories aren't about what happens. They're about the gap between what different minds make of what happens.*
+
+---
+
+## Modes of Apprehension
+
+### Beyond "knowing"
+
+The Stance model above treats knowledge as propositional — you either know a fact or you don't. But characters (and readers, and authors) relate to the world through multiple modes that are all causally active:
+
+```
+ApprehensionMode =
+  | 'epistemic'       // Propositional knowledge: "I know X is true"
+  | 'doxastic'        // Belief without certainty: "I believe X"
+  | 'affective'       // Felt knowledge: Frodo FEELS the Ring's weight
+  | 'embodied'        // Somatic/practiced: a swordsman knows how to fight
+  | 'intuitive'       // Pre-articulate: "something is wrong here"
+  | 'aesthetic'       // Resonance with beauty, pattern, rightness
+  | 'moral'           // Sense of ought: Sam knows he must keep going
+  | 'traumatic'       // Knowledge inscribed by damage: Frodo at Weathertop
+```
+
+These aren't just flavors of the same thing — they have different **causal properties**:
+
+- Epistemic knowledge can be *transmitted* (Gandalf tells Frodo about the Ring)
+- Affective knowledge can't be transmitted, only *evoked* (Gandalf can't make Frodo feel the Ring's pull; the Ring does that)
+- Embodied knowledge is *enacted*, not stated (Aragorn fights; the text doesn't list his techniques)
+- Traumatic knowledge *persists involuntarily* — it can't be revised by new information the way belief can
+- Moral knowledge generates *obligation*, which is an absential (the felt absence of the right action)
+
+### Extending Stance
+
+```
+Stance {
+  status: ...          // (as before)
+  mode: ApprehensionMode
+  confidence: number
+  justification: Justification
+  
+  // For affective/embodied modes:
+  intensity: number    // 0-1, how strongly felt
+  volatility: number   // How much this fluctuates (trauma = low volatility, high intensity)
+  
+  acquired: DiscoursePosition
+  superseded?: DiscoursePosition
+}
+```
+
+Now the Ring example gets richer. At Chapter 2, Frodo's relationship to the Ring's danger:
+
+| Mode | Content | Intensity |
+|------|---------|-----------|
+| epistemic | "The Ring is dangerous" | — (it's propositional) |
+| doxastic | Believes Gandalf's account | confidence: 0.85 |
+| affective | Doesn't yet *feel* it | intensity: 0.1 |
+| moral | Feels he *ought* to do something about it | intensity: 0.6 |
+
+By Mordor:
+
+| Mode | Content | Intensity |
+|------|---------|-----------|
+| epistemic | Same facts | — |
+| affective | FEELS the Ring's corruption constantly | intensity: 0.95 |
+| embodied | Body failing under the weight | intensity: 0.9 |
+| traumatic | Weathertop wound, Shelob — inscribed permanently | intensity: 0.8, volatility: 0.1 |
+| moral | Duty now in conflict with survival instinct | intensity: 1.0 |
+
+The propositional knowledge barely changed. Everything else transformed. **The narrative is happening in the non-epistemic modes.**
+
+---
+
+## Invisible Lenses
+
+### The lenses you can't see
+
+Some lenses are transparent to their holders. This is maybe the deepest epistemological problem in narrative analysis.
+
+```
+LensVisibility =
+  | 'reflective'      // Holder is aware of this lens and can account for it
+  | 'habitual'        // Holder could become aware if prompted (cultural norms)
+  | 'structural'      // Baked into the holder's framework; very hard to see
+  | 'invisible'       // Holder cannot see this lens from inside it
+```
+
+#### Author's invisible lenses
+
+Tolkien's orientalism — the East is where evil comes from, dark-skinned peoples serve Sauron. Tolkien didn't think of this as a "lens." It was the water he swam in. A 2026 reader sees it; a 1955 reader mostly didn't. A 2076 reader will see lenses in 2026 readings that we can't see now.
+
+```
+AuthorialLens {
+  id: string
+  description: string          // "Orientalist geography of good/evil"
+  visibility: LensVisibility   // 'invisible' to Tolkien
+  
+  // What this lens distorts
+  distortions: Array<{
+    factDomain: string[]       // ['geography', 'race', 'morality']
+    effect: string             // "Eastern peoples = evil alignment"
+    detected_by: string[]      // ['postcolonial-reader', 'critical-race-reader']
+  }>
+  
+  // When this lens was culturally normative
+  normative_period?: string    // "British imperial culture, early-mid 20th century"
+}
+```
+
+#### Narrator's invisible lenses
+
+An unreliable narrator is interesting precisely because their distortion may be:
+- **Deliberate** — they're lying (rare, e.g., Gone Girl)
+- **Self-deceptive** — they believe their own distortion (Humbert Humbert)
+- **Structural** — their position limits what they can know (Nick Carraway only sees Gatsby from outside)
+- **Cultural** — they share their society's blind spots (Stevens in Remains of the Day)
+
+```
+NarratorLens {
+  narrator: EntityRef
+  reliability: number                    // 0-1 overall
+  
+  distortions: Array<{
+    domain: string[]                     // What topics are distorted
+    kind: 'deliberate' | 'self-deceptive' | 'structural' | 'cultural'
+    visibility_to_narrator: LensVisibility
+    visibility_to_reader: LensVisibility // May differ!
+    // A self-deceptive narrator can't see their distortion
+    // but the reader might
+  }>
+}
+```
+
+The **gap between narrator's visibility and reader's visibility** is itself a source of narrative effect. When the reader can see the narrator's lens but the narrator can't — that's a specific form of dramatic irony. The reader is reading *through* and *around* the narrator simultaneously.
+
+#### Reader's invisible lenses
+
+This is the humbling part. Every reader has lenses they can't see. The system can model this by defining reader archetypes with *declared* and *undeclared* lenses:
+
+- **Declared lenses:** The archetype's explicit priors, cultural contexts, genre knowledge
+- **Undeclared lenses:** Biases the archetype can't see (and neither can we, for contemporary archetypes)
+
+We can retroactively add undeclared lenses as critical consciousness evolves. The same replay mechanics that handle retroactive absentials handle retroactive lens discovery.
+
+---
+
+## Overdetermined Apprehension
+
+Just as causation is overdetermined (Gandalf dies for multiple reasons), *knowing* is overdetermined. A reader's understanding of "the Ring is dangerous" operates simultaneously through:
+
+- Epistemic: the text states it
+- Affective: the prose evokes dread
+- Genre: "magic artifacts always corrupt" (prior)
+- Intertextual: echoes of Faust, Nibelungen, Monkey's Paw
+- Cultural: post-nuclear anxiety about power too great to wield
+- Authorial-invisible: Tolkien's Catholicism (original sin, the fall)
+
+All of these are active. None is sufficient alone. The *interference pattern* between them is the reading experience.
+
+This maps back to the Groovy Commutator: take any two modes of apprehension and check whether they commute. Reading-as-genre-exercise then reading-as-emotional-experience gives you one understanding. Reverse the order — feel first, then categorize — gives you a different one. Where they don't commute is where the text is alive.
+
+---
+
+## Revised Epistemic Architecture
+
+Putting it all together:
+
+```
+EpistemicField {
+  // Ground truth — facts about the story-world
+  facts: FactRegistry
+  
+  // Lenses — each knower's relationship to the facts
+  lenses: Map<KnowerId, Lens>
+  
+  // But lenses now include:
+  //   - Multiple apprehension modes per fact
+  //   - Justification chains
+  //   - Visibility metadata (can the lens-holder see their own lens?)
+  
+  // Invisible lenses — distortions in author, narrator, reader
+  authorLenses: AuthorialLens[]
+  narratorLenses: NarratorLens[]
+  
+  // Computed views
+  gaps(at: DiscoursePosition): EpistemicGap[]
+  tension(at: DiscoursePosition): number
+  ironies(at: DiscoursePosition): DramaticIrony[]
+  
+  // The meta-question: what can't we see?
+  blindSpots(archetype: ReaderArchetypeId): string[]
+  // Returns domains where this archetype has undeclared lenses
+  // For contemporary archetypes, this returns "unknown" — 
+  // which is the honest answer
+}
+```
+
+### The honest limit
+
+The system can model lenses it knows about. It cannot model lenses it doesn't know about — that's definitionally impossible. The best it can do is:
+
+1. Flag where *historical* readers had invisible lenses (we can see them now)
+2. Acknowledge that *contemporary* readers have invisible lenses we can't see yet
+3. Leave hooks for retroactive lens insertion as critical consciousness evolves
+
+This is not a bug. It's an accurate representation of the epistemic condition. Any system that claims to see all lenses is lying — it just has an invisible lens that says "I can see all lenses."
+
+---
+
+*The map is not the territory. The lens is not the eye. And the eye is not the seeing.*
